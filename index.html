@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Static Template</title>
+  <link rel="stylesheet" href="src/styles.css" />
+</head>
+
+<body>
+  <!-- <h1>
+    This is a static template, there is no bundler or bundling involved!
+  </h1>
+  <div>
+    <button id="rollem">Roll em!</button>
+  </div> -->
+  <div id="dice-box"></div>
+  <!-- <script type="module" src="src/index.js"></script> -->
+  <script type="module">
+    import DiceBox from "https://unpkg.com/@3d-dice/dice-box@1.0.12/dist/dice-box.es.min.js";
+
+    let Box = new DiceBox("#dice-box", {
+      assetPath: "assets/",
+      origin: "https://unpkg.com/@3d-dice/dice-box@1.0.8/dist/",
+      theme: "default",
+      themeColor: "#feea03",
+      offscreen: true,
+      scale: 6
+    });
+
+    Box.init();
+
+    window.rollDice = async function (desc) {
+      const result = await Box.roll(desc);
+      Box.clear();
+      webkit.messageHandlers.diceResultHandler.postMessage(result[0].value)
+      return result[0].value;
+    };
+  </script>
+
+</body>
+
+</html>
