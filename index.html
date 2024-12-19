@@ -34,6 +34,7 @@
 
     window.rollDice = async function (desc) {
       const result = await Box.roll(desc);
+      await delay(2000);
       Box.clear();
       webkit.messageHandlers.diceResultHandler.postMessage(result[0].value)
       return result[0].value;
