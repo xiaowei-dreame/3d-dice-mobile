@@ -10,12 +10,12 @@
 </head>
 
 <body>
-  <h1>
+  <!-- <h1>
     This is a static template, there is no bundler or bundling involved!
   </h1>
   <div>
     <button id="rollem">Roll em!</button>
-  </div>
+  </div> -->
   <div id="dice-box"></div>
   <!-- <script type="module" src="src/index.js"></script> -->
   <script type="module">
@@ -34,7 +34,7 @@
 
     window.rollDice = async function (desc) {
       const result = await Box.roll(desc);
-      await delay(2000);
+      // await delay(2000);
       Box.clear();
       webkit.messageHandlers.diceResultHandler.postMessage(result[0].value)
       return result[0].value;
